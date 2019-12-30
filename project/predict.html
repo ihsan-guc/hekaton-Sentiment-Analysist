@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+        <!-- Latest compiled and minified CSS -->
+        <link
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+  
+  
+
+  
+  <div class="d-flex align-items-center flex-column justify-content-center h-100 mx-auto">
+    <div class="row">
+      
+      <div class="row">
+        <form id="predictForm">
+          <div class="input-group form-group ">
+            <textarea class="form-control form-control-lg"  cols="65" rows="2" placeholder="Yorumunuzu Giriniz" id="predict" name="predict"></textarea>
+          </div>
+          
+          <div class="form-group">
+            <button class="btn btn-success btn-lg btn-block">Gönder</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+   
+
+
+
+  <script>
+    $("#predictForm").submit(function(event) {
+        event.preventDefault();
+        $.ajax({
+            url: "http://localhost:4500/nodepredict",
+            contentType: "application/json",
+            data: JSON.stringify({
+                "predict": $("#predict").val(),
+            }),
+            type: "POST",
+            dataType: "json",
+            success: function(msq) {
+              if(msq[0]===0){
+                alert("olumsuz yorum ")
+              }else{
+                alert("olumlu yorum")
+              }
+             
+            }
+        })
+    })
+</script>
+    
+</body>
+</html>

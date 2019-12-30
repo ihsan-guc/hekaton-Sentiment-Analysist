@@ -1,0 +1,14 @@
+body,html {
+    height: 100%;
+    }
+
+    body{
+        background-image: url('assets/image/bg.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      
+      .card{
+        background-color: rgba(0, 0, 0, 0.5) !important;
+      }
+      
